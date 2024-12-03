@@ -3,22 +3,21 @@ defmodule Aoc2024.Day01 do
 
   def part1(lines) do
     lines
-    |> Enum.map(&String.split/1)
+    |> Utils.parse_matrix()
     |> Utils.transpose()
-    |> parse_columns
     |> sort_columns
     |> walk_pairs
     |> Enum.sum()
   end
 
   def part2(lines) do
-  end
+    [first, second] =
+      lines
+      |> Utils.parse_matrix()
+      |> Utils.transpose()
 
-  defp parse_columns([first, second]) do
-    [
-      first |> Enum.map(&String.to_integer/1),
-      second |> Enum.map(&String.to_integer/1)
-    ]
+    counts = second |> Enum.frequencies()
+    first |> Enum.map(fn item -> item * Map.get(counts, item, 0) end) |> Enum.sum()
   end
 
   defp sort_columns([first, second]) do

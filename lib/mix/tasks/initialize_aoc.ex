@@ -18,7 +18,7 @@ defmodule Mix.Tasks.InitializeAoc do
           result =
             input
             |> String.trim()
-            |> String.split("\n")
+            |> String.split("\\n")
             |> part1()
 
           assert result == -1
@@ -30,7 +30,7 @@ defmodule Mix.Tasks.InitializeAoc do
           result =
             input
             |> String.trim()
-            |> String.split("\n")
+            |> String.split("\\n")
             |> part2()
 
           assert result == -1
