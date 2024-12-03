@@ -16,7 +16,9 @@ defmodule Mix.Tasks.InitializeAoc do
           {:ok, input} = File.read("inputs/day#{formatted}.txt")
 
           result =
-            String.split(input, "\\n")
+            input
+            |> String.trim()
+            |> String.split("\n")
             |> part1()
 
           assert result == -1
@@ -26,7 +28,9 @@ defmodule Mix.Tasks.InitializeAoc do
           {:ok, input} = File.read("inputs/day#{formatted}.txt")
 
           result =
-            String.split(input, "\\n")
+            input
+            |> String.trim()
+            |> String.split("\n")
             |> part2()
 
           assert result == -1
