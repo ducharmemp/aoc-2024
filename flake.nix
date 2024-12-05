@@ -11,7 +11,7 @@
           inherit system overlays;
         };
         basePackages = with pkgs; [beam.packages.erlang_27.elixir_1_17 beam.packages.erlang_27.erlang];
-        buildPackages = with pkgs; lib.optionals stdenv.hostPlatform.isLinux [inotify-tools] ++ lib.optionals stdenv.hostPlatform.isDarwin (with darwin.apple_sdk.frameworks; [CoreFoundation CoreServices]) ++ basePackages ++ [git docker-compose];
+        buildPackages = with pkgs; lib.optionals stdenv.hostPlatform.isLinux [inotify-tools] ++ lib.optionals stdenv.hostPlatform.isDarwin (with darwin.apple_sdk.frameworks; [CoreFoundation CoreServices]) ++ basePackages ++ [git docker-compose lexical];
         hooks = ''
           mkdir -p .nix-mix .nix-hex
           export MIX_HOME=$PWD/.nix-mix
